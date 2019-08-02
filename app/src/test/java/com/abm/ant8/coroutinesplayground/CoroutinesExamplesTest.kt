@@ -78,4 +78,34 @@ class CoroutinesExamplesTest {
 
             println("Helou, ${deferred.await()}")
         }
+
+    @Test
+    fun coroutinesOrder() =
+        runBlocking {
+            println("this should come first")
+            launch { printAfter(2000, 4) }
+            printAfter(1000, 2)
+            println("this should come one before last")
+        }
+
+    @Test
+    fun nestedCoroutines() =
+        runBlocking {
+            println("this will come first")
+
+            coroutineScope {
+                launch {
+                    printAfter(800, 4)
+                }
+
+                printAfter(400, 2)
+                println("this should come third")
+            }
+            println("here all subcoroutines should finish")
+        }
+
+    private suspend fun printAfter(delay: Long, order: Int) {
+        delay(delay)
+        println("this will print after $delay ms as ${order}th")
+    }
 }
