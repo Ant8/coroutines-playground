@@ -9,4 +9,8 @@ object WrcResultsRepository {
 
     suspend fun getTopTenCrewsFor(rally: String, @IntRange(from = 1978, to = 2019) season: Int): RallyResult =
         WrcResultsApi.service.getTopTenFor(rally, season).await()
+
+    fun getRalliesFor(@IntRange(from = 1978, to = 2019) season: Int) = ralliesFor[season]
+
+
 }
