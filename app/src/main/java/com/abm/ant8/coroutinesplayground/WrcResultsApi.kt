@@ -2,7 +2,6 @@ package com.abm.ant8.coroutinesplayground
 
 import androidx.annotation.IntRange
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
@@ -14,10 +13,10 @@ object WrcResultsApi {
 
     interface Service {
         @GET("championship")
-        fun getTopTenDriversOverallFor(@Query("year") @IntRange(from = 1978, to = 2019) season: Int): Call<DriverChampionshipsStandings>
+        suspend fun getTopTenDriversOverallFor(@Query("year") @IntRange(from = 1978, to = 2019) season: Int): DriverChampionshipsStandings
 
         @GET("rally")
-        fun getTopTenFor(@Query("name") rallyName: String, @Query("year") @IntRange(from = 1978, to = 2019) season: Int): Call<RallyResult>
+        suspend fun getTopTenFor(@Query("name") rallyName: String, @Query("year") @IntRange(from = 1978, to = 2019) season: Int): RallyResult
 
     }
 
