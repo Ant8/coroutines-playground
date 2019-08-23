@@ -24,4 +24,18 @@ class WrcResultsRepoInstrumentedPseudoTest {
         runBlocking {
             println(WrcResultsRepository.getTopTenCrewsFor("monte", 2015))
         }
+
+    @Test
+    fun rallyResultsErrorTest() =
+        runBlocking {
+            try {
+                println(WrcResultsRepository.getTopTenCrewsFor("poland", 2019))
+            } catch (exception: Exception) {
+                println("exception $exception")
+            }
+        }
+
+    @Test
+    fun getRalliesForSeasonTest() =
+        println(WrcResultsRepository.getRalliesFor(2017))
 }
