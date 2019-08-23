@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CoroutinesPlayground</string>
+    <string name="choose_season_btn">Choose season:</string>
 </resources>
