@@ -1,6 +1,7 @@
 package com.abm.ant8.coroutinesplayground
 
 import kotlinx.coroutines.*
+import org.junit.Ignore
 import org.junit.Test
 import kotlin.concurrent.thread
 
@@ -92,14 +93,63 @@ class CoroutinesTestPartTwo {
         printThreadId("coroutine scope is over")
     }
 
+    @Test
+    fun coroutinesARElightweightTest() = runBlocking {
+        repeat(100_000) {
+            launch {
+                delay(200)
+                print(".")
+            }
+        }
+    }
+
+    @Ignore("this crashes, will probably be fixed")
+    @Test
+    fun threadsAREnotThatLightweigt() {
+        (1..100_000)
+            .asSequence()
+            .map {
+                thread {
+                    Thread.sleep(200)
+                    print(".")
+                }
+            }
+            .forEach { it.start() }
+    }
+
+    @Test
+    fun useSuspendFun() = runBlocking {
+        launch {
+            firstSuspendedFun()
+        }
+        printHelloAndThreadId()
+    }
+
+    @Test
+    fun coroutinesFromGlobalScopeShutDown() = runBlocking {
+        GlobalScope.launch {
+            var i = 0
+            repeat(100) {
+                println("${i++}")
+                delay(100)
+            }
+        }
+        delay(1500)
+    }
+
     private fun printHelloAndThreadId() {
         println(Thread.currentThread().id)
         println("hello, ")
-        Thread.sleep(5000)
+        Thread.sleep(1000)
     }
 
     private fun printThreadId(message: String = "world!") {
         println(message)
         println(Thread.currentThread().id)
+    }
+
+    private suspend fun firstSuspendedFun() {
+        delay(200)
+        printThreadId()
     }
 }
