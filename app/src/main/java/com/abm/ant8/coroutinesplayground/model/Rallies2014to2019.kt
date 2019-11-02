@@ -1,4 +1,4 @@
-package com.abm.ant8.coroutinesplayground
+package com.abm.ant8.coroutinesplayground.model
 
 val ralliesFor
     get() = mapOf(

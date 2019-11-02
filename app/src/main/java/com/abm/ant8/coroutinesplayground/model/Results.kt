@@ -1,4 +1,4 @@
-package com.abm.ant8.coroutinesplayground
+package com.abm.ant8.coroutinesplayground.model
 
 inline class RallyResult(val topTen: List<CrewResult>)
 inline class DriverChampionshipsStandings(val topTen: List<DriverResult>)

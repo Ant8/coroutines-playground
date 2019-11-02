@@ -1,6 +1,7 @@
 package com.abm.ant8.coroutinesplayground
 
 import androidx.test.runner.AndroidJUnit4
+import com.abm.ant8.coroutinesplayground.model.WrcResultsRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith

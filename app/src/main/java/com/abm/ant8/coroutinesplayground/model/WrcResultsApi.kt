@@ -1,4 +1,4 @@
-package com.abm.ant8.coroutinesplayground
+package com.abm.ant8.coroutinesplayground.model
 
 import androidx.annotation.IntRange
 import okhttp3.OkHttpClient
