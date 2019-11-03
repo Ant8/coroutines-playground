@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.recyclerview.widget.RecyclerView android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/seasonsList"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/season_list_item"
     tools:itemCount="5">
     
