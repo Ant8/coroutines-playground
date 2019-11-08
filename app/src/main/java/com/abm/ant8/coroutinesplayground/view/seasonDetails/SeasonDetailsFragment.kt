@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.abm.ant8.coroutinesplayground.R
+import com.abm.ant8.coroutinesplayground.view.seasonDetails.di.SeasonDetailsViewModelFactory
+
+
 
 class SeasonDetailsFragment : Fragment() {
 
@@ -14,6 +17,7 @@ class SeasonDetailsFragment : Fragment() {
         fun newInstance() = SeasonDetailsFragment()
     }
 
+    private val season by lazy { arguments?.getInt(context?.getString(R.string.season_argument_name)?: "") ?: 1979 }
     private lateinit var viewModel: SeasonDetailsViewModel
 
     override fun onCreateView(
@@ -25,8 +29,8 @@ class SeasonDetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SeasonDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProviders.of(this, SeasonDetailsViewModelFactory(season)).get(SeasonDetailsViewModel::class.java)
+
     }
 
 }

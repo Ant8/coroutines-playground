@@ -12,7 +12,7 @@
         android:id="@+id/seasonDetailsFragment"
         android:name="com.abm.ant8.coroutinesplayground.view.seasonDetails.SeasonDetailsFragment">
         <argument
-            android:name="season"
+            android:name="@string/season_argument_name"
             app:argType="integer" />
     </fragment>
 </navigation>

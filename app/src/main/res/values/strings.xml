@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CoroutinesPlayground</string>
+
+    <string name="season_argument_name" translatable="false">season</string>
 </resources>

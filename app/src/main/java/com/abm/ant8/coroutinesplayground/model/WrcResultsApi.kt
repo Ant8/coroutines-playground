@@ -17,7 +17,6 @@ object WrcResultsApi {
 
         @GET("rally")
         suspend fun getTopTenFor(@Query("name") rallyName: String, @Query("year") @IntRange(from = 1978, to = 2019) season: Int): RallyResult
-
     }
 
     private val networkClient = OkHttpClient.Builder()
