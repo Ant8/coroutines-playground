@@ -6,5 +6,13 @@
     <fragment
         android:id="@+id/seasonListFragment"
         android:name="com.abm.ant8.coroutinesplayground.view.seasonList.SeasonListFragment"
-        android:label="SeasonListFragment" />
+        android:label="Choose a season" />
+
+    <fragment
+        android:id="@+id/seasonDetailsFragment"
+        android:name="com.abm.ant8.coroutinesplayground.view.seasonDetails.SeasonDetailsFragment">
+        <argument
+            android:name="season"
+            app:argType="integer" />
+    </fragment>
 </navigation>

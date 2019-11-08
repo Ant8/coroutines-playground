@@ -1,17 +1,18 @@
 package com.abm.ant8.coroutinesplayground.view.seasonList
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.abm.ant8.coroutinesplayground.R
 import kotlinx.android.synthetic.main.season_list_fragment.*
 
 class SeasonListFragment : Fragment() {
-    private val adapter by lazy { SeasonsListRecyclerAdapter() }
+    private val adapter by lazy { SeasonsListRecyclerAdapter(::navigateToDetails) }
 
     companion object {
         fun newInstance() = SeasonListFragment()
@@ -43,5 +44,9 @@ class SeasonListFragment : Fragment() {
             seasonsList.addAll(seasons)
             notifyDataSetChanged()
         }
+    }
+
+    private fun navigateToDetails(season: Int) {
+        findNavController().navigate(R.id.seasonDetailsFragment, Bundle().apply { putInt("season", season) })
     }
 }
