@@ -11,6 +11,21 @@ import org.junit.Test
 class MostBasicFlowExample {
 
     @Test
+    fun showSuspendFunReturningEverythingAtOnce() {
+        runBlocking {
+            // Launch a concurrent coroutine to check if the main thread is blocked
+            launch {
+                for (k in 1..3) {
+                    println("I'm not blocked $k")
+                    delay(100)
+                }
+            }
+            // Collect the flow
+            fooOneTime().forEach { value -> println(value) }
+        }
+    }
+
+    @Test
     fun showMostBasicFlowExample() {
         runBlocking {
             // Launch a concurrent coroutine to check if the main thread is blocked
@@ -33,4 +48,8 @@ class MostBasicFlowExample {
         }
     }
 
+    suspend fun fooOneTime(): List<Int> {
+        delay(100)
+        return listOf(1, 2, 3)
+    }
 }
